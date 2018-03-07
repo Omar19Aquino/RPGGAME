@@ -3,7 +3,7 @@ from MainRoom import Room
 from inventory import Inventory
 
 room2 = Room('Room2', 'you are in the second room of the space station', 'r2')
-room1 = Room('room 1', 'You are in room 1 of the space station', 'r1')
+room1 = Room('room 1', 'You are in game room of the space station', 'r1')
 meetingroom = Room('meetingroom', 'You are in the meeting room ', 'mr')
 bedroom1 = Room('bedroom', 'you are in a bedroom you can take a break astronaut', 'b1')
 room3 = Room('laboratory' , 'You are in the laboratory. ', 'r3')
@@ -20,23 +20,8 @@ room1.add_room('s', room2)
 room1.add_room('e', meetingroom)
 
 
-current_room = room1
-current_room.enter_room()
-
-while True:
-    direction = raw_input("what direction do you want to go?")
-    if direction == 'x':
-        break
-    elif (current_room.is_valid_direction(direction)):
-        current_room = current_room.next_room(direction)
-        current_room.enter_room()
-    else:
-        print "Ouch! You ran into a wall."
-
-
 inventory = Inventory()
-curent_room = room2
-current_room.enter_room(inventory)
+current_room = room2
 
 while True:
     current_room.enter_room(inventory)
@@ -44,8 +29,7 @@ while True:
     if command in ["exit", "x", "quit", "q"]:
         break
 
-    result = current_room.proces
-    command(command, inventory)
+    result = current_room.process_command(command, inventory)
     if isinstance(result, Room):
         current_room = result
         continue

@@ -1,3 +1,7 @@
+from inventory import LightSource
+from inventory import Inventory
+from inventory import Flashlight
+
 class Room():
     def __init__(self, name, description, id):
         self.name = name
@@ -18,7 +22,7 @@ class Room():
             self.rooms[direction] = room
         self.connectors.append((connector, actions[0]))
 
-    def enter_room(self):
+    def enter_room(self, inventory):
         print self.name
         print
         print self.description
@@ -53,6 +57,11 @@ class Room():
             return None
 
 class LockerRoom(Room):
-    def enter_room(self):
-        Room.enter_room(self)
+    def enter_room(self, inventory):
+        light_sources = inventory.get(LightSource)
+        if LightSource.is_one_on(light_sources):
+            Room.enter_room(self, inventory)
+        else:
+            print ("You were eaten by the xeno.")
+            print ("Game Over")
         exit(0)
