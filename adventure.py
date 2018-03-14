@@ -1,11 +1,15 @@
 from MainRoom import LockerRoom
 from MainRoom import Room
 from inventory import Inventory
+from inventory import Item
+from inventory import Literature
+from inventory import LightSource
+from inventory import Flashlight
 
 room2 = Room('Room2', 'you are in the second room of the space station', 'r2')
 room1 = Room('room 1', 'You are in game room of the space station', 'r1')
 meetingroom = Room('meetingroom', 'You are in the meeting room ', 'mr')
-bedroom1 = Room('bedroom', 'you are in a bedroom you can take a break astronaut', 'b1')
+bedroom1 = Room('bedroom', 'you are in a bedroom you can take a break astronaut (there is a flashlight here)', 'b1')
 room3 = Room('laboratory' , 'You are in the laboratory. ', 'r3')
 room4 = LockerRoom('xeno', 'You are in the last room, but there is a xenomorph', 'r4')
 
@@ -19,6 +23,7 @@ bedroom1.add_connection(room4, "a tiny door ", ["south west", "sw"])
 room1.add_room('s', room2)
 room1.add_room('e', meetingroom)
 
+bedroom1.add_item(Flashlight())
 
 inventory = Inventory()
 current_room = room2
