@@ -16,9 +16,12 @@ room4 = LockerRoom('xeno', 'You are in the last room, but there is a xenomorph',
 room2.add_connection(room3, "passage ", ["east","e"])
 room2.add_connection(bedroom1, "passage ", ["west","w"])
 meetingroom.add_connection(room3, "passage ", ["south", "s"])
+meetingroom.add_connection(room1, "passage ", ["west", "w"])
 room3.add_connection(room2, "tunel ", ["west", "w"])
+room3.add_connection(meetingroom, "tunel ", ["north", "n"])
 room2.add_connection(room1, "door ", ["north","n"])
 bedroom1.add_connection(room4, "a tiny door ", ["south west", "sw"])
+bedroom1.add_connection(room2, "passage ", ["east", "e"])
 
 room1.add_room('s', room2)
 room1.add_room('e', meetingroom)
