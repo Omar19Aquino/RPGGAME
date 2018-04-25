@@ -65,3 +65,8 @@ class LockerRoom(Room):
             print ("You were eaten by the xeno.")
             print ("Game Over")
         exit(0)
+
+class WinningRoom(Room):
+    def enter_room(self, inventory):
+        print ("You scaped")
+        exit(0)
